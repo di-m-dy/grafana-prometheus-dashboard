@@ -1,0 +1,18 @@
+global:
+  scrape_interval:     20s # By default, scrape targets every 15 seconds.
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+    project: 'django-app'
+    env: 'development'
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  - job_name: 'django-app'
+    static_configs:
+      - targets: [${DJANGO_METRICS_TARGET}]
+    basic_auth:
+      username: ${PROMETHEUS_USERNAME}
+      password: ${PROMETHEUS_USERNAME}
