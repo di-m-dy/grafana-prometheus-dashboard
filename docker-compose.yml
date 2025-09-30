@@ -17,7 +17,7 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
     ports:
-      - "80:3000"
+      - "3000:80"
     networks:
       - monitoring
 
